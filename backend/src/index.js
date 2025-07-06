@@ -10,11 +10,14 @@ import { connectDB } from "./lib/db.js";
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
 import { app, server } from "./lib/socket.js";
+import job from "./config/cron.js";
+import { ENV } from "./config/env.js";
 
 dotenv.config();
 
 const PORT = process.env.PORT;
 const __dirname = path.resolve();
+if(ENV.NODE_ENV=="production") job.start();
 
 app.use(express.json());
 app.use(cookieParser());
