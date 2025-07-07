@@ -30,9 +30,7 @@ app.use(
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
-app.get("/ping", (req, res) => {
-  res.send("pong");
-});
+
 
 
 if (process.env.NODE_ENV === "production") {
